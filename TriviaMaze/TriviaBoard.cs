@@ -36,10 +36,12 @@ namespace TriviaMaze
             XPos = YPos = 0;
         }
 
+        //Call to move up one spot
         public bool MoveUp()
         {
             bool rv = true;
             YPos--;
+            //check if invalid. if so, revert work done
             if(YPos < 0)
             {
                 Log("Can't move up out of bounds");
@@ -49,6 +51,8 @@ namespace TriviaMaze
             //valid move, do work
             return rv;
         }
+
+        //call to move down one spot
         public bool MoveDown()
         {
             bool rv = true;

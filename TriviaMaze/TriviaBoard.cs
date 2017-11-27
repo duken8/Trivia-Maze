@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+//Tyger test comment
 namespace TriviaMaze
 {
     /*
@@ -36,19 +36,16 @@ namespace TriviaMaze
             XPos = YPos = 0;
         }
 
-        //Call to move up one position
         public bool MoveUp()
         {
             bool rv = true;
             YPos--;
-            //check of move is valid
             if(YPos < 0)
             {
                 Log("Can't move up out of bounds");
                 YPos++;
                 return false;
             }
-
             //valid move, do work
             return rv;
         }

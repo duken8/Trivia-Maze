@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaMaze"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="805.2" Width="806" KeyDown="Window_KeyDown">
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Height="790" Width="800">
         <Menu Height="20" >
             <MenuItem Header="_File"/>
@@ -15,7 +15,7 @@
         <ToolBar Height="28">
             <Button Content="Temp"/>
         </ToolBar>
-        <Grid x:Name="GameGrid" ShowGridLines="True" Height="726" Margin="0,0,0,0">
+        <Grid x:Name="GameGrid" ShowGridLines="False" Height="726" Margin="0,0,0,0" Background="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="5*"/>
@@ -30,9 +30,207 @@
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <Ellipse x:Name="Player" Fill="#FFFF4000" HorizontalAlignment="Center" Height="50" Stroke="Black" VerticalAlignment="Center" Width="50" Grid.Row="0" Grid.Column="0"/>
-            <Line X1="0" X2="100" Y1="0" Y2="100" Grid.Column="1" Stroke="#FFFA2309" StrokeThickness="2"/>
+            <Ellipse x:Name="Player" Fill="#FF0028FF" HorizontalAlignment="Center" Height="50" Stroke="Black" VerticalAlignment="Center" Width="50" Grid.Row="0" Grid.Column="0"/>
 
+            <!--column 0 | row 0 -->
+            <DockPanel HorizontalAlignment="Center" Height="145" LastChildFill="False" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="n01" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"></Rectangle>
+                <Rectangle x:Name="s01" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"></Rectangle>
+                <Rectangle x:Name="w01" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Left"></Rectangle>
+                <Rectangle x:Name="e01" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"></Rectangle>
+            </DockPanel>
+
+            <!--column 0 | row 1 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s00" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"></Rectangle>
+                <Rectangle x:Name="n00" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Top"></Rectangle>
+                <Rectangle x:Name="w00" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Left"></Rectangle>
+                <Rectangle x:Name="e00" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"></Rectangle>
+            </DockPanel>
+
+            <!--column 0 | row 2 -->
+            <DockPanel HorizontalAlignment="Center" Height="145" LastChildFill="False" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Width="160" >
+                <Rectangle x:Name="n02" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="s02" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="w02" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e02" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 0 | row 3 -->
+            <DockPanel HorizontalAlignment="Center" Height="145" LastChildFill="False" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Width="160" >
+                <Rectangle x:Name="n03" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="s03" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="w03" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e03" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 0 | row 4 -->
+            <DockPanel HorizontalAlignment="Center" Height="145" LastChildFill="False" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Width="160" >
+                <Rectangle x:Name="n04" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="s04" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="w04" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e04" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 1 | row 0 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s10" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n10" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w10" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e10" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 1 | row 1 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s11" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n11" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w11" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e11" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 1 | row 2 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="160" >
+                <Rectangle x:Name="s12" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n12" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w12" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e12" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 1 | row 3 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s13" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n13" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w13" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e13" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 1 | row 4 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s14" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n14" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w14" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e14" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 2 | row 0 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s20" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n20" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w20" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e20" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 2 | row 1 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s21" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n21" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w21" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e21" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 2 | row 2 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s22" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n22" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w22" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e22" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 2 | row 3 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s23" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n23" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w23" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e23" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 2 | row 4 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s24" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n24" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w24" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e24" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 3 | row 0 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s30" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n30" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w30" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e30" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 3 | row 1 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s31" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n31" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w31" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e31" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 3 | row 2 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s32" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n32" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w32" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e32" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 3 | row 3 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s33" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n33" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w33" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e33" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 3 | row 4 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s34" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n34" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w34" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e34" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 4 | row 0 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s40" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n40" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w40" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e40" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 4 | row 1 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s41" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n41" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w41" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e41" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 4 | row 2 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s42" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n42" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w42" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e42" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 4 | row 3 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s43" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n43" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w43" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e43" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+            <!--column 4 | row 4 -->
+            <DockPanel HorizontalAlignment="Center" Height="146" LastChildFill="False" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="160">
+                <Rectangle x:Name="s44" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Bottom"/>
+                <Rectangle x:Name="n44" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Top"/>
+                <Rectangle x:Name="w44" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
+                <Rectangle x:Name="e44" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
+            </DockPanel>
         </Grid>
     </StackPanel>
 </Window>

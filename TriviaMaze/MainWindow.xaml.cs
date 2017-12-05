@@ -46,7 +46,16 @@ namespace TriviaMaze
                              *      Animate Open gate before player moves
                              *      Animate Open gate behind player after move
                              */
-                            Player.SetValue(Grid.RowProperty, (int)(Player.GetValue(Grid.RowProperty)) - 1);
+                            //GameGrid.Children
+                            //GameGrid.FindName
+                            //disable door im walking into
+                            DisableWall("n", CurCol, CurRow);
+
+                            //disable door im coming out of (opposite)
+                            DisableWall("s", TheBoard.XPos, TheBoard.YPos);
+
+                            //move player
+                            Player.SetValue(Grid.RowProperty, TheBoard.YPos);
 
                         }
                         else //Move failed
@@ -58,6 +67,13 @@ namespace TriviaMaze
                     case Key.Down:
                         if (TheBoard.MoveDown())
                         {
+                            //disable door im walking into
+                            DisableWall("s", CurCol, CurRow);
+
+                            //disable door im coming out of (opposite)
+                            DisableWall("n", TheBoard.XPos, TheBoard.YPos);
+
+                            //move player
                             Player.SetValue(Grid.RowProperty, TheBoard.YPos);
 
                         }
@@ -71,6 +87,13 @@ namespace TriviaMaze
                     case Key.Left:
                         if (TheBoard.MoveLeft())
                         {
+                            //disable door im walking into
+                            DisableWall("w", CurCol, CurRow);
+
+                            //disable door im coming out of (opposite)
+                            DisableWall("e", TheBoard.XPos, TheBoard.YPos);
+
+                            //move player
                             Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) - 1);
 
                         }
@@ -83,6 +106,13 @@ namespace TriviaMaze
                     case Key.Right:
                         if(TheBoard.MoveRight())
                         {
+                            //disable door im walking into
+                            DisableWall("e", CurCol, CurRow);
+
+                            //disable door im coming out of (opposite)
+                            DisableWall("w", TheBoard.XPos, TheBoard.YPos);
+
+                            //move player
                             Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) + 1);
 
                         }
@@ -98,6 +128,21 @@ namespace TriviaMaze
                 
             }
         }
+
+        private void DisableWall(string v, int curCol, int curRow)
+        {
+            String WallName = $"{v}{curCol}{curRow}";
+            var temp = (Rectangle)GameGrid.FindName(WallName);
+            temp.Visibility = Visibility.Hidden;
+        }
+        
+        private void ReinforceWall(String v, int curCol, int curRow)
+        {
+            String WallName = $"{v}{curCol}{curRow}";
+            var temp = (Rectangle)GameGrid.FindName(WallName);
+            temp.Fill = Brushes.Black;
+        }
+
         private void Log(String msg)
         {
             Debug.WriteLine(msg);

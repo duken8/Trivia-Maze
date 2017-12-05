@@ -14,14 +14,15 @@ namespace TriviaMaze
     {
         public int XCoord { get; private set; }
         public int YCoord { get; private set; }
-        public Lock NorthLock { get; private set; }
-        public Lock SouthLock { get; private set; }
-        public Lock EastLock { get; private set; }
-        public Lock WestLock { get; private set; }
-
+        public Lock NorthLock { get; set; }
+        public Lock SouthLock { get; set; }
+        public Lock EastLock { get; set; }
+        public Lock WestLock { get; set; }
+        public int LocksCount { get; private set; }
 
         public TriviaTile(int x, int y)
         {
+            LocksCount = 0;
             XCoord = x;
             YCoord = y;
             switch(x)
@@ -33,16 +34,19 @@ namespace TriviaMaze
                 case 0:
                     EastLock = Lock.SoftLock;
                     WestLock = Lock.HardLock;
+                    LocksCount++;
                     break;
 
                 case 4:
                     EastLock = Lock.HardLock;
                     WestLock = Lock.SoftLock;
+                    LocksCount++;
                     break;
 
                 default:
                     EastLock = Lock.SoftLock;
                     WestLock = Lock.SoftLock;
+                    LocksCount += 2;
                     break;
             }
             //same as x but with North/south gates
@@ -51,16 +55,19 @@ namespace TriviaMaze
                 case 0:
                     NorthLock = Lock.HardLock;
                     SouthLock = Lock.SoftLock;
+                    LocksCount++;
                     break;
 
                 case 4:
                     NorthLock = Lock.SoftLock;
                     SouthLock = Lock.HardLock;
+                    LocksCount++;
                     break;
 
                 default:
                     NorthLock = Lock.SoftLock;
                     SouthLock = Lock.SoftLock;
+                    LocksCount += 2;
                     break;
             }
         }

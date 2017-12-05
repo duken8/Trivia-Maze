@@ -39,9 +39,17 @@ namespace TriviaMaze
                 switch (e.Key)
                 {
                     case Key.Up:
-                        if (TheBoard.MoveUp())
+                        if (TheBoard.MoveUp()) //Move successful
                         {
+                            /* TODO:
+                             *      Animate Open gate before player moves
+                             *      Animate Open gate behind player after move
+                             */
                             Player.SetValue(Grid.RowProperty, (int)(Player.GetValue(Grid.RowProperty)) - 1);
+
+                        }
+                        else //Move failed
+                        {
 
                         }
                         break;
@@ -49,9 +57,14 @@ namespace TriviaMaze
                     case Key.Down:
                         if (TheBoard.MoveDown())
                         {
-                            Player.SetValue(Grid.RowProperty, (int)(Player.GetValue(Grid.RowProperty)) + 1);
+                            Player.SetValue(Grid.RowProperty, TheBoard.YPos);
 
                         }
+                        else
+                        {
+
+                        }
+
                         break;
 
                     case Key.Left:
@@ -60,12 +73,20 @@ namespace TriviaMaze
                             Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) - 1);
 
                         }
+                        else
+                        {
+
+                        }
                         break;
 
                     case Key.Right:
                         if(TheBoard.MoveRight())
                         {
                             Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) + 1);
+
+                        }
+                        else
+                        {
 
                         }
                         break;

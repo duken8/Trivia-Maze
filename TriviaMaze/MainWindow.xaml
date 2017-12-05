@@ -8,12 +8,21 @@
         Title="MainWindow" Height="800" Width="800" KeyDown="Window_KeyDown">
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Height="790" Width="800">
         <Menu Height="20" >
-            <MenuItem Header="_File"/>
-            <MenuItem Header="_Game"/>
-            <MenuItem Header="_Help"/>
+            <MenuItem Header="_File">
+                <MenuItem x:Name="SaveGameMenu" Header="Save Game" HorizontalAlignment="Left" Height="30" Grid.IsSharedSizeScope="True" Click="SaveGameMenu_Click"/>
+                <MenuItem x:Name="LoadGameMenu" Header="Load Game" HorizontalAlignment="Left" Height="30" Click="LoadGameMenu_Click"/>
+                <MenuItem x:Name="QuitMenu" Header="Quit" HorizontalAlignment="Left" Height="30" Click="QuitMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem x:Name="AboutMenu" Header="About" HorizontalAlignment="Left" Height="100" Width="139.2" Click="AboutMenu_Click"/>
+                <MenuItem x:Name="GameplayInfoMenu" Header="Gameplay Info" HorizontalAlignment="Left" Height="100" Width="139.2" Click="GameplayInfoMenu_Click"/>
+            </MenuItem>
         </Menu>
-        <ToolBar Height="28">
-            <Button Content="Temp"/>
+        <ToolBar x:Name="ToolBarShortcut" Height="28">
+            <Button x:Name="SaveGameToolBar" Content="Save Game" VerticalAlignment="Top" Click="SaveGameMenu_Click"/>
+            <Button Content="Load Game" Click="LoadGameMenu_Click"/>
+            <Button Content="About" Click="AboutMenu_Click"/>
+            <Button Content="Gameplay Info" Click="GameplayInfoMenu_Click"/>
         </ToolBar>
         <Grid x:Name="GameGrid" ShowGridLines="True" Height="726" Margin="0,0,0,0">
             <Grid.RowDefinitions>

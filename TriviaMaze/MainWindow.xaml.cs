@@ -104,7 +104,7 @@ namespace TriviaMaze
                         break;
 
                     case Key.Right:
-                        if(TheBoard.MoveRight())
+                        if (TheBoard.MoveRight())
                         {
                             //disable door im walking into
                             DisableWall("e", CurCol, CurRow);
@@ -122,10 +122,11 @@ namespace TriviaMaze
                         }
                         break;
                 }
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 Log("Cannot move out of bounds");
-                
+
             }
         }
 
@@ -147,5 +148,48 @@ namespace TriviaMaze
         {
             Debug.WriteLine(msg);
         }
+
+        private void SaveGameMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //This should save the game once everything is serializable
+            MessageBox.Show("We can't let you save the game, Hal.");
+        }
+
+        private void LoadGameMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //This should ask for a new file when it is finally implemented
+            MessageBox.Show("I can't load you do that.");
+        }
+
+        private void QuitMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //This quits the game
+            //We can later ask if they want to save if the game hasn't been completed yet.
+            this.Close();
+        }
+
+        private void AboutMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Final project for CSCD371\n" +
+                "Produced by Adam Holzer, Nick Duke, and Tyger Hugh.\n" +
+                "This is a maze filled with trivia about EWU and Cheney.\n" +
+                "Soon to be about Riverpoint.");
+        }
+
+        private void GameplayInfoMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This is a maze filled with EWU trivia. Go Eags!\n" +
+                "Move using the arrow keys.\n" +
+                "Move into a red door to get asked a question.\n" +
+                "If you answer it correctly, the door will open.\n" +
+                "Otherwise, the door will turn black and be locked for the rest of the game.\n\n" +
+                "Reach the bottom right corner to win!");
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //this is a tight little tester to find my errors :(
+            MessageBox.Show("This is broken.");
+        }
     }
 }
+

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Data.SQLite;
+
 namespace TriviaMaze
 {
     /*
@@ -22,7 +24,24 @@ namespace TriviaMaze
         public int YPos{ get; private set; } 
         private readonly int MAX_SIZE;
         public int SoftLocksRemaining { get; private set; }
-        
+
+        //Database results
+        //Boolean section
+        List<String> BooleanPrompts = new List<String>();
+        List<Boolean> BooleanAnswers = new List<Boolean>();
+
+        //MultipleChoice
+        List<String> ChoicePrompts = new List<String>();
+        List<String> ChoiceCorrectAnswers = new List<String>();
+        List<String> ChoiceFalse1Answers = new List<String>();
+        List<String> ChoiceFalse2Answers = new List<String>();
+        List<String> ChoiceFalse3Answers = new List<String>();
+
+        //Extended response
+        List<String> ExtendedPrompts = new List<String>();
+        List<String> ExtendedAnswers = new List<String>();
+
+
 
         public TriviaBoard()
         {
@@ -45,6 +64,64 @@ namespace TriviaMaze
             MyLoc = GameMap[XPos, YPos];
             MAX_SIZE = 5;
             XPos = YPos = 0;
+
+            //grab all sqlite data
+            //ConfigureDatabase();
+            SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;");
+            conn.Open();
+        }
+
+        private void ConfigureDatabase()
+        {
+            Log("Openning connection");
+            SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;"); 
+            conn.Open();
+            Log("Connection open");
+            SQLiteCommand cmd = conn.CreateCommand();
+
+            //Boolean data
+            cmd.CommandText = "SELECT Prompt, Answer FROM BoolQuestions";
+            SQLiteDataReader r = cmd.ExecuteReader();
+            Log("Boolean Stuff: \n");
+            while (r.Read())
+            {
+                BooleanPrompts.Add(Convert.ToString(r["Prompt"]));
+                int BooleanAnswer = int.Parse(Convert.ToString(r["Answer"]));
+                if(BooleanAnswer == 1)
+                {
+                    BooleanAnswers.Add(true);
+                }
+                else
+                {
+                    BooleanAnswers.Add(false);
+                }
+                Log(r.ToString());
+            }
+
+            //Multiple Choice
+            cmd.CommandText = "SELECT Prompt, Answer, FalseAnswer1, FalseAnswer2, FalseAnswer3 FROM ChoiceQuestions";
+            r = cmd.ExecuteReader();
+            Log("Multiple Choice Stuff: \n");
+            while (r.Read())
+            {
+                ChoicePrompts.Add(Convert.ToString(r["Prompt"]));
+                ChoiceCorrectAnswers.Add(Convert.ToString(r["Answer"]));
+                ChoiceFalse1Answers.Add(Convert.ToString(r["FalseAnswer1"]));
+                ChoiceFalse2Answers.Add(Convert.ToString(r["FalseAnswer2"]));
+                ChoiceFalse3Answers.Add(Convert.ToString(r["FalseAnswer3"]));
+                Log(r.ToString());
+            }
+
+            //Extended
+            cmd.CommandText = "SELECT Prompt, Keyword FROM ExtendedQuestions";
+            r = cmd.ExecuteReader();
+            Log("Extended Response Stuff: \n");
+            while (r.Read())
+            {
+                ExtendedPrompts.Add(Convert.ToString(r["Prompt"]));
+                ExtendedAnswers.Add(Convert.ToString(r["Keyword"]));
+                Log(r.ToString());
+            }
         }
 
         //call to build a tile at the location passed in
@@ -122,6 +199,8 @@ namespace TriviaMaze
             else
             {
                 // Move unobstructed, present question and adjust lock accordingly
+
+                //BasicQuestion questionForm
 
                 if (true) //assume question is answered correct for now
                 {

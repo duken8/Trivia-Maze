@@ -42,6 +42,7 @@ namespace TriviaMaze
                         if (TheBoard.MoveUp()) //Move successful
                         {
                             /* TODO:
+                             * 
                              *      Animate Open gate before player moves
                              *      Animate Open gate behind player after move
                              */

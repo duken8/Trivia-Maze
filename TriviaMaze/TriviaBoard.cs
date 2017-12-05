@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
-//Tyger test comment
 namespace TriviaMaze
 {
     /*

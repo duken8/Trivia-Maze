@@ -9,6 +9,7 @@ namespace TriviaMaze
     /*
     * Represents a room where the user chooses which direction to go,
     * and is presented a question before being allowed to pass
+    * 
     */
     public class TriviaTile
     {

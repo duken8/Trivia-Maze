@@ -43,3 +43,5 @@ D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.csproj.GenerateResource.Cache
 D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.csproj.CoreCompileInputs.cache
 D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.exe
 D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.pdb
+C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\BasicQuestion.g.cs
+C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\BasicQuestion.baml

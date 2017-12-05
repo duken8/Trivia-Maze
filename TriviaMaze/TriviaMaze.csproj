@@ -58,8 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BasicQuestion.xaml.cs">
+      <DependentUpon>BasicQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TriviaBoard.cs" />
     <Compile Include="TriviaTile.cs" />
+    <Page Include="BasicQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -17,20 +17,24 @@ namespace TriviaMaze
     /// <summary>
     /// Interaction logic for BasicQuestion.xaml
     /// </summary>
+    [Serializable]
     public partial class BasicQuestion : Window
     {
         String correctAnswer;
-        public Boolean result = false;
+        public Boolean result { get; private set; }
         private Boolean submitClicked = false;
+        
         public BasicQuestion()
         {
             InitializeComponent();
+            result = false;
         }
 
         //Constructor for true false questions
         public BasicQuestion(String prompt, Boolean answer)
         {
             InitializeComponent();
+            result = false;
             Answer3.Visibility = Visibility.Hidden;
             Answer4.Visibility = Visibility.Hidden;
             Answer1.Content = "True";
@@ -43,6 +47,7 @@ namespace TriviaMaze
         public BasicQuestion(String[] data)//Prompt,RealAnswer,Wrong1,Wrong2,Wrong3
         {
             InitializeComponent();
+            result = false;
             PromptLabel.Text = data[0];
             correctAnswer = data[1];
             ConfigureRadioButtons(data);

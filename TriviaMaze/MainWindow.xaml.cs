@@ -19,6 +19,7 @@ namespace TriviaMaze
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    [Serializable]
     public partial class MainWindow : Window
     {
         TriviaBoard TheBoard;
@@ -118,7 +119,11 @@ namespace TriviaMaze
                         }
                         else
                         {
-
+                            Log("Failed to open door");
+                            String WallName = $"e{CurCol}{CurRow}";
+                            var temp = (Rectangle)GameGrid.FindName(WallName);
+                            temp.Stroke = Brushes.Black;
+                            //ReinforceWall("e", CurCol, CurRow);
                         }
                         break;
                 }
@@ -141,7 +146,7 @@ namespace TriviaMaze
         {
             String WallName = $"{v}{curCol}{curRow}";
             var temp = (Rectangle)GameGrid.FindName(WallName);
-            temp.Fill = Brushes.Black;
+            temp.Stroke = Brushes.Black;
         }
 
         private void Log(String msg)

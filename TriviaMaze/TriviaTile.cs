@@ -11,6 +11,7 @@ namespace TriviaMaze
     * and is presented a question before being allowed to pass
     * 
     */
+    [Serializable]
     public class TriviaTile
     {
         public int XCoord { get; private set; }

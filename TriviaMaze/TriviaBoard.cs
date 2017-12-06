@@ -13,6 +13,7 @@ namespace TriviaMaze
      * Represents the entire gameboard, composed of a grid of TriviaTiles
      * that the user must navigate through
      */
+    [Serializable]
     public class TriviaBoard
     {
         /* only allocate questions in the rooms we've explored too.
@@ -337,10 +338,11 @@ namespace TriviaMaze
                 //valid move, do work
                 //Randomize question/answer selection
                 String[] array = {ChoicePrompts[0], ChoiceCorrectAnswers[0], ChoiceFalse1Answers[0], ChoiceFalse2Answers[0], ChoiceFalse3Answers[0]};
-                Window newQuest = new BasicQuestion(array);
+                BasicQuestion newQuest = new BasicQuestion(array);
                 newQuest.ShowDialog();
+                bool response = newQuest.result;
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
-                if (true) //assume question is answered correct for now
+                if (response) //assume question is answered correct for now
                 {
                     MyLoc.EastLock = Lock.Unlocked;
                     XPos++;

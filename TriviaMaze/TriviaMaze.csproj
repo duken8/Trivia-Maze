@@ -61,9 +61,16 @@
     <Compile Include="BasicQuestion.xaml.cs">
       <DependentUpon>BasicQuestion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtendedQuestion.xaml.cs">
+      <DependentUpon>ExtendedQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TriviaBoard.cs" />
     <Compile Include="TriviaTile.cs" />
     <Page Include="BasicQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExtendedQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

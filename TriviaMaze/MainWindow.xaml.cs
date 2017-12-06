@@ -101,10 +101,7 @@ namespace TriviaMaze
 
                             //move player
                             Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
-<<<<<<< HEAD
 
-=======
->>>>>>> 805b6898fa0a28238eb94ba6458b5cde169594da
                         }
                         else
                         {
@@ -124,11 +121,10 @@ namespace TriviaMaze
 
                             //move player
                             Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
-<<<<<<< HEAD
 
-=======
+
                             CheckForWinner();
->>>>>>> 805b6898fa0a28238eb94ba6458b5cde169594da
+
                         }
                         else
                         {

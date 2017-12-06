@@ -45,3 +45,5 @@ D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.exe
 D:\EW\Trivia-Maze\TriviaMaze\obj\Debug\TriviaMaze.pdb
 C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\BasicQuestion.g.cs
 C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\BasicQuestion.baml
+C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\ExtendedQuestion.g.cs
+C:\Users\short\source\repos\Trivia-Maze\TriviaMaze\obj\Debug\ExtendedQuestion.baml

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Windows;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
@@ -66,9 +67,9 @@ namespace TriviaMaze
             XPos = YPos = 0;
 
             //grab all sqlite data
-            //ConfigureDatabase();
-            SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;");
-            conn.Open();
+            ConfigureDatabase();
+            //SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;");
+            //conn.Open();
         }
 
         private void ConfigureDatabase()
@@ -97,7 +98,7 @@ namespace TriviaMaze
                 }
                 Log(r.ToString());
             }
-
+            r.Close();
             //Multiple Choice
             cmd.CommandText = "SELECT Prompt, Answer, FalseAnswer1, FalseAnswer2, FalseAnswer3 FROM ChoiceQuestions";
             r = cmd.ExecuteReader();
@@ -111,7 +112,7 @@ namespace TriviaMaze
                 ChoiceFalse3Answers.Add(Convert.ToString(r["FalseAnswer3"]));
                 Log(r.ToString());
             }
-
+            r.Close();
             //Extended
             cmd.CommandText = "SELECT Prompt, Keyword FROM ExtendedQuestions";
             r = cmd.ExecuteReader();
@@ -122,6 +123,7 @@ namespace TriviaMaze
                 ExtendedAnswers.Add(Convert.ToString(r["Keyword"]));
                 Log(r.ToString());
             }
+            r.Close();
         }
 
         //call to build a tile at the location passed in
@@ -249,6 +251,8 @@ namespace TriviaMaze
             else
             {
                 //valid move, do work
+                Window Question = new BasicQuestion(BooleanPrompts[0], BooleanAnswers[0]);
+                Question.ShowDialog();
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
                 if (true) //assume question is answered correct for now
                 {

@@ -29,6 +29,7 @@ namespace TriviaMaze
         //Constructor for true false questions
         public BasicQuestion(String prompt, Boolean answer)
         {
+            InitializeComponent();
             Answer3.Visibility = Visibility.Hidden;
             Answer4.Visibility = Visibility.Hidden;
             Answer1.Content = "True";

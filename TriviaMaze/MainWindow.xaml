@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaMaze"
         mc:Ignorable="d"
-        Title="MainWindow" Height="805.2" Width="806" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="812.4" Width="813.2" KeyDown="Window_KeyDown" ResizeMode="NoResize">
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Height="790" Width="800">
         <Menu Height="20" >
             <MenuItem Header="_File">
@@ -14,8 +14,8 @@
                 <MenuItem x:Name="QuitMenu" Header="Quit" HorizontalAlignment="Left" Height="30" Click="QuitMenu_Click"/>
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem x:Name="AboutMenu" Header="About" HorizontalAlignment="Left" Height="100" Width="139.2" Click="AboutMenu_Click"/>
-                <MenuItem x:Name="GameplayInfoMenu" Header="Gameplay Info" HorizontalAlignment="Left" Height="100" Width="139.2" Click="GameplayInfoMenu_Click"/>
+                <MenuItem x:Name="AboutMenu" Header="About" HorizontalAlignment="Left"  Click="AboutMenu_Click"/>
+                <MenuItem x:Name="GameplayInfoMenu" Header="Gameplay Info" HorizontalAlignment="Left" Click="GameplayInfoMenu_Click"/>
             </MenuItem>
         </Menu>
         <ToolBar x:Name="ToolBarShortcut" Height="28">
@@ -24,7 +24,7 @@
             <Button Content="About" Click="AboutMenu_Click"/>
             <Button Content="Gameplay Info" Click="GameplayInfoMenu_Click"/>
         </ToolBar>
-        <Grid x:Name="GameGrid" ShowGridLines="False" Height="726" Margin="0,0,0,0" Background="Black">
+        <Grid x:Name="GameGrid" ShowGridLines="False" Height="726" Margin="0,0,0,0" Background="#FF6F7179">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="5*"/>
@@ -240,6 +240,70 @@
                 <Rectangle x:Name="w44" StrokeThickness="4" Stroke="Red" Fill="Red" DockPanel.Dock="Left"/>
                 <Rectangle x:Name="e44" StrokeThickness="4" Stroke="Black" Fill="Red" DockPanel.Dock="Right"/>
             </DockPanel>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,2,149,93.6" Grid.ColumnSpan="2"></Rectangle>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,2,151,93.6" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,2,151,93.6" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,2,151,93.6" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,96,149,145.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96,151,145.2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96,151,145.2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96,151,145.2" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,144,149,97.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144,151,97.2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144,151,97.2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144,151,97.2" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,96.4,149,144.8" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.4,151,144.8" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.4,151,144.8" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.4,151,144.8" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,144.4,149,96.8" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.4,151,96.8" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.4,151,96.8" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.4,151,96.8" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,96.8,149,144.4" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.8,151,144.4" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.8,151,144.4" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,96.8,151,144.4" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,144.8,149,96.4" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.8,151,96.4" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.8,151,96.4" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,144.8,151,96.4" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,97.2,149,144" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,97.2,151,144" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,97.2,151,144" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,97.2,151,144" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,145.2,149,96" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,145.2,151,96" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,145.2,151,96" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,145.2,151,96" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="151,91.6,149,4" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,91.6,151,4" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,91.6,151,4" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="50" StrokeThickness="5" Panel.ZIndex="5" Width="20" Margin="149,91.6,151,4" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="0,135.2,110,136" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="0,134.8,110,136.4" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="0,134.4,110,136.8" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="0,136,110,135.2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="108,136,102,135.2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="108,134.4,102,136.8" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="108,134.8,102,136.4" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="108,135.2,102,136" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="104,136,106,135.2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="104,134.4,106,136.8" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="104,134.8,106,136.4" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="104,135.2,106,136" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,136,104,135.2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,134.4,104,136.8" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,134.8,104,136.4" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,135.2,104,136" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,136,104,135.2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,134.4,104,136.8" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,134.8,104,136.4" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="110" Margin="106,135.2,104,136" Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="110,135.2,0,136" Grid.Row="3" Grid.RowSpan="2" Grid.Column="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="110,134.8,0,136.4" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="110,134.4,0,136.8" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"/>
+            <Rectangle Stroke="Black" Fill="Black" Height="20" StrokeThickness="5" Panel.ZIndex="5" Width="50" Margin="110,136,0,135.2" Grid.RowSpan="2" Grid.Column="4"/>
         </Grid>
     </StackPanel>
 </Window>

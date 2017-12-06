@@ -19,14 +19,24 @@ namespace TriviaMaze
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /*
+     * Free Sprites
+     * https://cdn.tutsplus.com/gamedev/uploads/2013/05/spriteSheet.png
+     */
     [Serializable]
     public partial class MainWindow : Window
     {
         TriviaBoard TheBoard;
+        private BitmapImage pforward = new BitmapImage(new Uri(@"Resources/playerforward.png", UriKind.Relative));
+        private BitmapImage pbackward = new BitmapImage(new Uri(@"../../Resources/playerbackward.png", UriKind.Relative));
+        private BitmapImage pleft = new BitmapImage(new Uri(@"../../Resources/playerleft.png", UriKind.Relative));
+        private BitmapImage pright = new BitmapImage(new Uri(@"../../Resources/playerright.png", UriKind.Relative));
         public MainWindow()
         {
             InitializeComponent();
             TheBoard = new TriviaBoard();
+            //Player.Source = pforward;
+            
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -40,15 +50,9 @@ namespace TriviaMaze
                 switch (e.Key)
                 {
                     case Key.Up:
+                        Player.Source = pbackward;
                         if (TheBoard.MoveUp()) //Move successful
                         {
-                            /* TODO:
-                             * 
-                             *      Animate Open gate before player moves
-                             *      Animate Open gate behind player after move
-                             */
-                            //GameGrid.Children
-                            //GameGrid.FindName
                             //disable door im walking into
                             DisableWall("n", CurCol, CurRow);
 
@@ -61,11 +65,12 @@ namespace TriviaMaze
                         }
                         else //Move failed
                         {
-
+                            ReinforceWall("n", CurCol, CurRow);
                         }
                         break;
 
                     case Key.Down:
+                        Player.Source = pforward;
                         if (TheBoard.MoveDown())
                         {
                             //disable door im walking into
@@ -80,12 +85,13 @@ namespace TriviaMaze
                         }
                         else
                         {
-
+                            ReinforceWall("s", CurCol, CurRow);
                         }
 
                         break;
 
                     case Key.Left:
+                        Player.Source = pleft;
                         if (TheBoard.MoveLeft())
                         {
                             //disable door im walking into
@@ -95,16 +101,17 @@ namespace TriviaMaze
                             DisableWall("e", TheBoard.XPos, TheBoard.YPos);
 
                             //move player
-                            Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) - 1);
+                            Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
 
                         }
                         else
                         {
-
+                            ReinforceWall("w", CurCol, CurRow);
                         }
                         break;
 
                     case Key.Right:
+                        Player.Source = pright;
                         if (TheBoard.MoveRight())
                         {
                             //disable door im walking into
@@ -114,16 +121,16 @@ namespace TriviaMaze
                             DisableWall("w", TheBoard.XPos, TheBoard.YPos);
 
                             //move player
-                            Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) + 1);
+                            Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
 
                         }
                         else
                         {
                             Log("Failed to open door");
-                            String WallName = $"e{CurCol}{CurRow}";
-                            var temp = (Rectangle)GameGrid.FindName(WallName);
-                            temp.Stroke = Brushes.Black;
-                            //ReinforceWall("e", CurCol, CurRow);
+                            //String WallName = $"e{CurCol}{CurRow}";
+                            //var temp = (Rectangle)GameGrid.FindName(WallName);
+                            //temp.Stroke = Brushes.Black;
+                            ReinforceWall("e", CurCol, CurRow);
                         }
                         break;
                 }

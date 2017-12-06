@@ -106,5 +106,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\playerbackward.png" />
+    <Resource Include="Resources\playerforward.png" />
+    <Resource Include="Resources\playerleft.png" />
+    <Resource Include="Resources\playerright.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

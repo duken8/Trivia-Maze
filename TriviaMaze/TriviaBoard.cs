@@ -71,16 +71,13 @@ namespace TriviaMaze
 
         private void ConfigureDatabase()
         {
-            Log("Openning connection");
             SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;"); 
             conn.Open();
-            Log("Connection open");
             SQLiteCommand cmd = conn.CreateCommand();
 
             //Boolean data
             cmd.CommandText = "SELECT Prompt, Answer FROM BoolQuestions";
             SQLiteDataReader r = cmd.ExecuteReader();
-            Log("Boolean Stuff: \n");
             while (r.Read())
             {
                 BooleanPrompts.Add(Convert.ToString(r["Prompt"]));
@@ -93,14 +90,12 @@ namespace TriviaMaze
                 {
                     BooleanAnswers.Add(false);
                 }
-                Log(r.ToString());
             }
             r.Close();
 
             //Multiple Choice
             cmd.CommandText = "SELECT Prompt, Answer, FalseAnswer1, FalseAnswer2, FalseAnswer3 FROM ChoiceQuestions";
             r = cmd.ExecuteReader();
-            Log("Multiple Choice Stuff: \n");
             while (r.Read())
             {
                 ChoicePrompts.Add(Convert.ToString(r["Prompt"]));
@@ -114,7 +109,6 @@ namespace TriviaMaze
             //Extended
             cmd.CommandText = "SELECT Prompt, Keyword FROM ExtendedQuestions";
             r = cmd.ExecuteReader();
-            Log("Extended Response Stuff: \n");
             while (r.Read())
             {
                 ExtendedPrompts.Add(Convert.ToString(r["Prompt"]));
@@ -175,7 +169,6 @@ namespace TriviaMaze
                 MyLoc = GameMap[x, y];
             }
         }
-
         //Call to move up one spot
         public bool MoveUp()
         {
@@ -198,10 +191,9 @@ namespace TriviaMaze
             else
             {
                 // Move unobstructed, present question and adjust lock accordingly
-
                 //BasicQuestion questionForm
-
-                if (true) //assume question is answered correct for now
+                bool response = RandomizedQuestion();
+                if (response) //assume question is answered correct for now
                 {
                     MyLoc.NorthLock = Lock.Unlocked;
                     YPos--;
@@ -248,8 +240,9 @@ namespace TriviaMaze
             else
             {
                 //valid move, do work
+                bool response = RandomizedQuestion();
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
-                if (true) //assume question is answered correct for now
+                if (response) //assume question is answered correct for now
                 {
                     MyLoc.SouthLock = Lock.Unlocked;
                     YPos++;
@@ -292,8 +285,9 @@ namespace TriviaMaze
             else
             {
                 //valid move, do work
+                bool response = RandomizedQuestion();
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
-                if (true) //assume question is answered correct for now
+                if (response) //assume question is answered correct for now
                 {
                     MyLoc.WestLock = Lock.Unlocked;
                     XPos--;
@@ -337,10 +331,7 @@ namespace TriviaMaze
             {
                 //valid move, do work
                 //Randomize question/answer selection
-                String[] array = {ChoicePrompts[0], ChoiceCorrectAnswers[0], ChoiceFalse1Answers[0], ChoiceFalse2Answers[0], ChoiceFalse3Answers[0]};
-                BasicQuestion newQuest = new BasicQuestion(array);
-                newQuest.ShowDialog();
-                bool response = newQuest.result;
+                bool response = RandomizedQuestion();            
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
                 if (response) //assume question is answered correct for now
                 {
@@ -365,7 +356,109 @@ namespace TriviaMaze
             //BuildNextTile(XPos, YPos);
             //return rv;
         }
-        
+
+        private bool RandomizedQuestion()
+        {
+            Random rand = new Random();
+            int questType; 
+            bool result = true;
+            bool flag = true;
+            do
+            {
+                questType = rand.Next(0, 3);
+                switch (questType)
+                {
+                    case 0:
+                        if (ChoicePrompts.Count <= 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            result = ConfigureMultipleChoice();
+                            flag = false;
+                            break;
+                        }
+                    case 1:
+                        if(BooleanPrompts.Count <= 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            result = ConfigureBooleanChoice();
+                            flag = false;
+                            break;
+                        }
+                    case 2:
+                        if(ExtendedPrompts.Count <= 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            result = ConfigureExtended();
+                            flag = false;
+                            break;
+                        }
+                }
+            } while (flag);            
+            return result;            
+        }
+
+        #region Question Prompts and Results
+        private bool ConfigureExtended()
+        {
+            Random rand = new Random();
+            int rng = rand.Next(0, ExtendedPrompts.Count);
+            String prompt = ExtendedPrompts[rng];
+            String keyword = ExtendedAnswers[rng];
+            Console.Out.WriteLine("Prompt is: " + prompt + " and Answer is: " + keyword);
+
+            //Drop choice from list
+            ExtendedPrompts.RemoveAt(rng);
+            ExtendedAnswers.RemoveAt(rng);
+
+            ExtendedQuestion newQuest = new ExtendedQuestion(prompt, keyword);
+            newQuest.ShowDialog();
+            return newQuest.result;
+        }
+
+        private bool ConfigureBooleanChoice()
+        {
+            Random rand = new Random();
+            int rng = rand.Next(0, BooleanPrompts.Count);
+            String prompt = BooleanPrompts[rng];
+            bool answer = BooleanAnswers[rng];
+
+            //Drop choice from list
+            BooleanPrompts.RemoveAt(rng);
+            BooleanAnswers.RemoveAt(rng);
+
+            BasicQuestion newQuest = new BasicQuestion(prompt, answer);
+            newQuest.ShowDialog();
+            return newQuest.result;
+        }
+
+        private bool ConfigureMultipleChoice()
+        {
+            Random rand = new Random();
+            int rng = rand.Next(0, ChoicePrompts.Count);
+            String[] array = { ChoicePrompts[rng], ChoiceCorrectAnswers[rng], ChoiceFalse1Answers[rng], ChoiceFalse2Answers[rng], ChoiceFalse3Answers[rng] };
+
+            //Drop choice from list
+            ChoicePrompts.RemoveAt(rng);
+            ChoiceCorrectAnswers.RemoveAt(rng);
+            ChoiceFalse1Answers.RemoveAt(rng);
+            ChoiceFalse2Answers.RemoveAt(rng);
+            ChoiceFalse3Answers.RemoveAt(rng);
+
+            BasicQuestion newQuest = new BasicQuestion(array);
+            newQuest.ShowDialog();
+            return newQuest.result;
+        }
+        #endregion
+
         private void Log(String msg)
         {
             Debug.WriteLine(msg);

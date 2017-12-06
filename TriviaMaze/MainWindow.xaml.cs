@@ -57,7 +57,6 @@ namespace TriviaMaze
 
                             //move player
                             Player.SetValue(Grid.RowProperty, TheBoard.YPos);
-
                         }
                         else //Move failed
                         {
@@ -76,7 +75,7 @@ namespace TriviaMaze
 
                             //move player
                             Player.SetValue(Grid.RowProperty, TheBoard.YPos);
-
+                            CheckForWinner();
                         }
                         else
                         {
@@ -95,8 +94,7 @@ namespace TriviaMaze
                             DisableWall("e", TheBoard.XPos, TheBoard.YPos);
 
                             //move player
-                            Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) - 1);
-
+                            Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
                         }
                         else
                         {
@@ -114,8 +112,8 @@ namespace TriviaMaze
                             DisableWall("w", TheBoard.XPos, TheBoard.YPos);
 
                             //move player
-                            Player.SetValue(Grid.ColumnProperty, (int)(Player.GetValue(Grid.ColumnProperty)) + 1);
-
+                            Player.SetValue(Grid.ColumnProperty, TheBoard.XPos);
+                            CheckForWinner();
                         }
                         else
                         {
@@ -132,6 +130,15 @@ namespace TriviaMaze
             {
                 Log("Cannot move out of bounds");
 
+            }
+        }
+
+        private void CheckForWinner()
+        {
+            if ((int)Player.GetValue(Grid.ColumnProperty) == 4 && (int)Player.GetValue(Grid.RowProperty) == 4)
+            {
+                MessageBox.Show("YOU WON!!!!!!", "YOU ROCK!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                this.Close();
             }
         }
 

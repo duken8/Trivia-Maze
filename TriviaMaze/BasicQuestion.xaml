@@ -5,17 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaMaze"
         mc:Ignorable="d"
-        Title="Before you can continue..." Height="300" Width="300">
+        Title="Before you can continue..." Height="333.055" Width="429.999" ResizeMode="NoResize" AutomationProperties.IsRequiredForForm="True" Closing="OnClosing">
     <Grid>
-        <Label x:Name="PromptLabel" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="123" Width="274" Background="Black" FontSize="14" Foreground="White"/>
-        <GroupBox Header="Choose:" HorizontalAlignment="Left" Height="111" Margin="10,149,0,0" VerticalAlignment="Top" Width="135">
-            <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Height="90" Margin="0,1,-3.4,-2.2" VerticalAlignment="Top" Width="125">
+        <GroupBox Header="Choose:" HorizontalAlignment="Left" Height="144" Margin="10,149,0,0" VerticalAlignment="Top" Width="181">
+            <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Height="120" Margin="0,1,-3,0" VerticalAlignment="Top" Width="171">
                 <RadioButton x:Name="Answer1" Content="" Canvas.Left="10" Canvas.Top="10" GroupName="AnswerGroup"/>
                 <RadioButton x:Name="Answer2" Content="" Canvas.Left="10" Canvas.Top="25" GroupName="AnswerGroup"/>
                 <RadioButton x:Name="Answer3" Content="" Canvas.Left="10" Canvas.Top="40" GroupName="AnswerGroup"/>
                 <RadioButton x:Name="Answer4" Content="" Canvas.Left="10" Canvas.Top="55" GroupName="AnswerGroup"/>
             </Canvas>
         </GroupBox>
-        <Button x:Name="SubmitButton" Content="Final Answer" HorizontalAlignment="Left" Margin="172,194,0,0" VerticalAlignment="Top" Width="75" Click="SubmitButton_Click"/>
+        <Button x:Name="SubmitButton" Content="Final Answer" HorizontalAlignment="Left" Margin="245,195,0,0" VerticalAlignment="Top" Width="96" Click="SubmitButton_Click" Height="31"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="98" Margin="33,22,0,0" VerticalAlignment="Top" Width="358">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFCA0000" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock x:Name="PromptLabel" HorizontalAlignment="Left" Margin="9,-1,0,-0.8" TextWrapping="Wrap" VerticalAlignment="Top" Height="91" Width="338" Foreground="White">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background></TextBlock>
+        </Border>
     </Grid>
 </Window>

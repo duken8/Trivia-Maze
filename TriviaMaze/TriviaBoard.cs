@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-using System.Windows;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.Windows;
 
 namespace TriviaMaze
 {
@@ -42,8 +42,6 @@ namespace TriviaMaze
         List<String> ExtendedPrompts = new List<String>();
         List<String> ExtendedAnswers = new List<String>();
 
-
-
         public TriviaBoard()
         {
             GameMap = new TriviaTile[5, 5];
@@ -68,8 +66,6 @@ namespace TriviaMaze
 
             //grab all sqlite data
             ConfigureDatabase();
-            //SQLiteConnection conn = new SQLiteConnection("Data Source=TriviaMazeDB.db;Version=3;");
-            //conn.Open();
         }
 
         private void ConfigureDatabase()
@@ -99,6 +95,7 @@ namespace TriviaMaze
                 Log(r.ToString());
             }
             r.Close();
+
             //Multiple Choice
             cmd.CommandText = "SELECT Prompt, Answer, FalseAnswer1, FalseAnswer2, FalseAnswer3 FROM ChoiceQuestions";
             r = cmd.ExecuteReader();
@@ -110,9 +107,9 @@ namespace TriviaMaze
                 ChoiceFalse1Answers.Add(Convert.ToString(r["FalseAnswer1"]));
                 ChoiceFalse2Answers.Add(Convert.ToString(r["FalseAnswer2"]));
                 ChoiceFalse3Answers.Add(Convert.ToString(r["FalseAnswer3"]));
-                Log(r.ToString());
             }
             r.Close();
+
             //Extended
             cmd.CommandText = "SELECT Prompt, Keyword FROM ExtendedQuestions";
             r = cmd.ExecuteReader();
@@ -121,7 +118,6 @@ namespace TriviaMaze
             {
                 ExtendedPrompts.Add(Convert.ToString(r["Prompt"]));
                 ExtendedAnswers.Add(Convert.ToString(r["Keyword"]));
-                Log(r.ToString());
             }
             r.Close();
         }
@@ -251,8 +247,6 @@ namespace TriviaMaze
             else
             {
                 //valid move, do work
-                Window Question = new BasicQuestion(BooleanPrompts[0], BooleanAnswers[0]);
-                Question.ShowDialog();
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
                 if (true) //assume question is answered correct for now
                 {
@@ -341,6 +335,10 @@ namespace TriviaMaze
             else
             {
                 //valid move, do work
+                //Randomize question/answer selection
+                String[] array = {ChoicePrompts[0], ChoiceCorrectAnswers[0], ChoiceFalse1Answers[0], ChoiceFalse2Answers[0], ChoiceFalse3Answers[0]};
+                Window newQuest = new BasicQuestion(array);
+                newQuest.ShowDialog();
                 //SoftLocksRemaining--; //either way, we are converting a soft lock into something new
                 if (true) //assume question is answered correct for now
                 {

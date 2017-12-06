@@ -21,6 +21,7 @@ namespace TriviaMaze
     {
         String correctAnswer;
         public Boolean result = false;
+        private Boolean submitClicked = false;
         public BasicQuestion()
         {
             InitializeComponent();
@@ -34,14 +35,15 @@ namespace TriviaMaze
             Answer4.Visibility = Visibility.Hidden;
             Answer1.Content = "True";
             Answer2.Content = "False";
-            PromptLabel.Content = prompt;
+            PromptLabel.Text = prompt;
             correctAnswer = answer.ToString();
         }
 
         //Constructor for multiple choice questions
         public BasicQuestion(String[] data)//Prompt,RealAnswer,Wrong1,Wrong2,Wrong3
         {
-            PromptLabel.Content = data[0];
+            InitializeComponent();
+            PromptLabel.Text = data[0];
             correctAnswer = data[1];
             ConfigureRadioButtons(data);
         }
@@ -53,28 +55,28 @@ namespace TriviaMaze
             switch(rand)
             {
                 case 0:
-                    Answer1.Content = data[0];
-                    Answer2.Content = data[1];
-                    Answer3.Content = data[2];
-                    Answer4.Content = data[3];
+                    Answer1.Content = data[1];
+                    Answer2.Content = data[2];
+                    Answer3.Content = data[3];
+                    Answer4.Content = data[4];
                     break;
                 case 1:
-                    Answer1.Content = data[1];
-                    Answer2.Content = data[3];
-                    Answer3.Content = data[2];
-                    Answer4.Content = data[0];
+                    Answer1.Content = data[2];
+                    Answer2.Content = data[4];
+                    Answer3.Content = data[3];
+                    Answer4.Content = data[1];
                     break;
                 case 2:
-                    Answer1.Content = data[2];
-                    Answer2.Content = data[3];
-                    Answer3.Content = data[1];
-                    Answer4.Content = data[0];
+                    Answer1.Content = data[3];
+                    Answer2.Content = data[4];
+                    Answer3.Content = data[2];
+                    Answer4.Content = data[1];
                     break;
                 case 3:
-                    Answer1.Content = data[1];
-                    Answer2.Content = data[0];
-                    Answer3.Content = data[3];
-                    Answer4.Content = data[2];
+                    Answer1.Content = data[2];
+                    Answer2.Content = data[1];
+                    Answer3.Content = data[4];
+                    Answer4.Content = data[3];
                     break;
             }
         }
@@ -87,11 +89,15 @@ namespace TriviaMaze
                 {
                     MessageBox.Show("Correct! You can now advance!", "Well Done!", MessageBoxButton.OK);
                     result = true;
+                    submitClicked = true;
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Incorrect! You have now locked that gate!", "Unlucky!", MessageBoxButton.OK);
                     result = false;
+                    submitClicked = true;
+                    this.Close();
                 }
             }
             else if((Boolean)Answer2.IsChecked)
@@ -100,11 +106,15 @@ namespace TriviaMaze
                 {
                     MessageBox.Show("Correct! You can now advance!", "Well Done!", MessageBoxButton.OK);
                     result = true;
+                    submitClicked = true;
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Incorrect! You have now locked that gate!", "Unlucky!", MessageBoxButton.OK);
                     result = false;
+                    submitClicked = true;
+                    this.Close();
                 }
             }
             else if((Boolean)Answer3.IsChecked)
@@ -113,11 +123,15 @@ namespace TriviaMaze
                 {
                     MessageBox.Show("Correct! You can now advance!", "Well Done!", MessageBoxButton.OK);
                     result = true;
+                    submitClicked = true;
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Incorrect! You have now locked that gate!", "Unlucky!", MessageBoxButton.OK);
                     result = false;
+                    submitClicked = true;
+                    this.Close();
                 }
             }
             else if((Boolean)Answer4.IsChecked)
@@ -126,16 +140,28 @@ namespace TriviaMaze
                 {
                     MessageBox.Show("Correct! You can now advance!", "Well Done!", MessageBoxButton.OK);
                     result = true;
+                    submitClicked = true;
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Incorrect! You have now locked that gate!", "Unlucky!", MessageBoxButton.OK);
                     result = false;
+                    submitClicked = true;
+                    this.Close();
                 }
             }
             else
             {
                 MessageBox.Show("Please check an answer before hitting the Final Answer button!", "Error", MessageBoxButton.OK);
+            }
+        }
+
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(submitClicked == false)
+            {
+                e.Cancel = true;
             }
         }
     }

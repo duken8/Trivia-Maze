@@ -46,19 +46,6 @@ namespace TriviaMaze
         public TriviaBoard()
         {
             GameMap = new TriviaTile[5, 5];
-
-            /* instead of instantiating all of them, we are only going to 
-             * instantiate rooms we've reached
-            for (int i = 0; i < GameMap.GetLength(0); i++)
-            {
-                for(int j = 0; j < GameMap.GetLength(0); j++)
-                {
-                    GameMap[i, j] = new TriviaTile();
-
-                }
-                
-            }*/
-            //Log($"XPos => {XPos}\nYPos => {YPos}");
             SoftLocksRemaining = 0;
             BuildNextTile(XPos, YPos);
             MyLoc = GameMap[XPos, YPos];
@@ -161,6 +148,7 @@ namespace TriviaMaze
                         break;
                 }
                 SoftLocksRemaining += MyLoc.LocksCount;
+                FixLocks();
                 //Log($"Active SoftLocks - {SoftLocksRemaining}");
             }
             else
@@ -169,6 +157,79 @@ namespace TriviaMaze
                 MyLoc = GameMap[x, y];
             }
         }
+
+        internal bool CheckForLoss()
+        {
+            if (SoftLocksRemaining == 0)
+                return true;
+            else if(GameMap[4,3] != null && GameMap[3,4] != null)
+            {
+                if (GameMap[4, 3].SouthLock == Lock.HardLock && GameMap[3, 4].EastLock == Lock.HardLock)
+                    return true;
+            }
+            return false;
+        }
+
+        private void FixLocks()
+        {
+            TriviaTile TempLoc;
+            //check to left (west)
+            if(XPos != 0) 
+            {
+                if(GameMap[XPos - 1, YPos] != null)
+                {
+                    TempLoc = GameMap[XPos - 1, YPos];
+                    if(TempLoc.EastLock == Lock.HardLock)
+                    {
+                        MyLoc.WestLock = Lock.HardLock;
+                        SoftLocksRemaining--;
+                    }
+                }
+            }
+            //check to right (east)
+            if(XPos != 4)
+            {
+                if(GameMap[XPos + 1, YPos] != null)
+                {
+                    TempLoc = GameMap[XPos + 1, YPos];
+                    if (TempLoc.WestLock == Lock.HardLock)
+                    {
+                        MyLoc.EastLock = Lock.HardLock;
+                        SoftLocksRemaining--;
+                    }
+
+                }
+            }
+            //check up (north)
+            if(YPos != 0)
+            {
+                if (GameMap[XPos, YPos - 1] != null)
+                {
+                    TempLoc = GameMap[XPos, YPos - 1];
+                    if(TempLoc.SouthLock == Lock.HardLock)
+                    {
+                        MyLoc.NorthLock = Lock.HardLock;
+                        SoftLocksRemaining--;
+                    }
+
+                }
+            }
+            //checck down (south)
+            if(YPos != 4)
+            {
+                if (GameMap[XPos, YPos + 1] != null)
+                {
+                    TempLoc = GameMap[XPos, YPos + 1];
+                    if (TempLoc.NorthLock == Lock.HardLock)
+                    {
+                        MyLoc.SouthLock = Lock.HardLock;
+                        SoftLocksRemaining--;
+                    }
+
+                }
+            }
+        }
+
         //Call to move up one spot
         public bool MoveUp()
         {

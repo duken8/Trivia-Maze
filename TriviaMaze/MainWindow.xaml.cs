@@ -65,6 +65,8 @@ namespace TriviaMaze
                         else //Move failed
                         {
                             ReinforceWall("n", CurCol, CurRow);
+                            if(CurRow != 0)
+                                ReinforceWall("s", CurCol, CurRow - 1);
                         }
                         break;
 
@@ -85,6 +87,8 @@ namespace TriviaMaze
                         else
                         {
                             ReinforceWall("s", CurCol, CurRow);
+                            if(CurRow != 4)
+                                ReinforceWall("n", CurCol, CurRow + 1);
                         }
 
                         break;
@@ -106,6 +110,8 @@ namespace TriviaMaze
                         else
                         {
                             ReinforceWall("w", CurCol, CurRow);
+                            if (CurCol != 0)
+                                ReinforceWall("e", CurCol - 1, CurRow);
                         }
                         break;
 
@@ -128,14 +134,13 @@ namespace TriviaMaze
                         }
                         else
                         {
-                            Log("Failed to open door");
-                            //String WallName = $"e{CurCol}{CurRow}";
-                            //var temp = (Rectangle)GameGrid.FindName(WallName);
-                            //temp.Stroke = Brushes.Black;
                             ReinforceWall("e", CurCol, CurRow);
+                            if (CurCol != 4)
+                                ReinforceWall("w", CurCol + 1, CurRow);
                         }
                         break;
                 }
+                CheckForLoss();
             }
             catch (ArgumentException ex)
             {
@@ -144,10 +149,24 @@ namespace TriviaMaze
             }
         }
 
+        private void CheckForLoss()
+        {
+            Log("Checking if the player has lost yet...");
+            bool result = TheBoard.CheckForLoss();
+            if(result)
+            {
+                //logic for loss
+                //TODO: replace temp ending with real ending
+                MessageBox.Show("Your story ends here", "Goodbye", MessageBoxButton.OK, MessageBoxImage.Stop);
+                this.Close();
+            }
+        }
+
         private void CheckForWinner()
         {
             if ((int)Player.GetValue(Grid.ColumnProperty) == 4 && (int)Player.GetValue(Grid.RowProperty) == 4)
             {
+                //TODO: replace temp ending with real ending
                 MessageBox.Show("YOU WON!!!!!!", "YOU ROCK!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 this.Close();
             }
